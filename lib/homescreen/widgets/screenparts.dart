@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-Widget firstPart(BuildContext context, List trains) {
+Widget firstPart(BuildContext context, List trains, String station) {
   return Container(
     decoration: const BoxDecoration(color: Colors.black),
     child: Padding(
@@ -44,6 +44,7 @@ Widget firstPart(BuildContext context, List trains) {
           Expanded(
             child: Container(
               width: 150,
+              // height: 300,
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return buildTrainListItem(trains[index], context, index);
@@ -107,11 +108,11 @@ Widget secondPart(BuildContext context, List trains, String date) {
             height: 20,
           ),
           Text(
-            'Number of booked seats:${numberOfBookedSeats} ',
+            'Number of booked seats:8',
             style: Theme.of(context).textTheme.bodySmall,
           ),
           Text(
-            'Number of available seats: ${numberOfAvailableSeats}',
+            'Number of available seats:40',
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],

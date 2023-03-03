@@ -11,7 +11,8 @@ import 'package:multi_split_view/multi_split_view.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ControlLayout extends StatefulWidget {
-  const ControlLayout({super.key});
+  final String station;
+  const ControlLayout({super.key, required this.station});
   @override
   State<ControlLayout> createState() => _ControlLayoutState();
 }
@@ -21,9 +22,8 @@ class _ControlLayoutState extends State<ControlLayout> {
 
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit()
-        ..percentCircularIndeicator()
-        ..getSeats(trainId),
+      create: (context) => AppCubit()..percentCircularIndeicator(),
+      //..getSeats(trainId)
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, AppStates state) {},
         builder: (context, AppStates state) => Scaffold(
@@ -36,7 +36,7 @@ class _ControlLayoutState extends State<ControlLayout> {
                   areas: [Area(weight: 0.15)],
                 ),
                 children: [
-                  firstPart(context, allTrains),
+                  firstPart(context, allTrains, widget.station),
                   MultiSplitViewTheme(
                     data: MultiSplitViewThemeData(
                       dividerThickness: 0.00000000000000001,

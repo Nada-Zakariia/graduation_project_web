@@ -14,8 +14,8 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void selectPage() {
-    trainId = trains[itemSelect]['trainID'];
-    getSeats(trainId);
+    // trainId = trains[itemSelect]['trainID'];
+    // getSeats(trainId);
     //print(trains[itemSelect]['trainID']);
     emit(AppSelectState());
   }
@@ -27,29 +27,29 @@ class AppCubit extends Cubit<AppStates> {
     emit(AppIndicatorState());
   }
 
-  void getSeats(String trainId) async {
-    List seats = [];
-    numberOfBookedSeats = 0;
-    numberOfAvailableSeats = 0;
-    await FirebaseFirestore.instance
-        .collection('trains')
-        .doc(trainId)
-        .collection('seats')
-        .get()
-        .then((value) {
-      print('=====================================');
-      value.docs.forEach((e) {
-        seats = e[DateFormat('EEEE').format(now)];
-      });
-      for (bool i in seats) {
-        if (i) {
-          numberOfBookedSeats += 1;
-        }
-      }
-      numberOfAvailableSeats = 48 - numberOfBookedSeats;
-      emit(GetSeatsSuccessState());
-    }).catchError((error) {
-      emit(GetSeatsErrorState(error.toString()));
-    });
-  }
+  // void getSeats(String trainId) async {
+  //   List seats = [];
+  //   numberOfBookedSeats = 0;
+  //   numberOfAvailableSeats = 0;
+  //   await FirebaseFirestore.instance
+  //       .collection('trains')
+  //       .doc(trainId)
+  //       .collection('seats')
+  //       .get()
+  //       .then((value) {
+  //     print('=====================================');
+  //     value.docs.forEach((e) {
+  //       seats = e[DateFormat('EEEE').format(now)];
+  //     });
+  //     for (bool i in seats) {
+  //       if (i) {
+  //         numberOfBookedSeats += 1;
+  //       }
+  //     }
+  //     numberOfAvailableSeats = 48 - numberOfBookedSeats;
+  //     emit(GetSeatsSuccessState());
+  //   }).catchError((error) {
+  //     emit(GetSeatsErrorState(error.toString()));
+  //   });
+  // }
 }

@@ -35,3 +35,4 @@ String trainId = trains[0]['trainID'];
 List trains = [];
 var numberOfBookedSeats = 0;
 var numberOfAvailableSeats = 0;
+String stationName = '';

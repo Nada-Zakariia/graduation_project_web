@@ -33,7 +33,6 @@ class LoginCubit extends Cubit<LoginStates> {
         .then((doc) {
       stationName = doc['name'];
       getTrainsOfStation(stationName, context);
-
       emit(LoginSucessState());
     }).catchError((error) {
       emit(LoginErrorState(error.toString()));
@@ -56,7 +55,7 @@ class LoginCubit extends Cubit<LoginStates> {
       });
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ControlLayout()),
+        MaterialPageRoute(builder: (context) =>  ControlLayout(station:stationName,)),
       );
       emit(GetTrainsSuccessState());
     });
