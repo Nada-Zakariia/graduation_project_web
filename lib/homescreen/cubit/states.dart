@@ -8,6 +8,8 @@ class AppSelectState extends AppStates {}
 
 class AppIndicatorState extends AppStates {}
 
+class DataArrivalState extends AppStates {}
+
 // class GetTrainsSuccessState extends AppStates {}
 
 // class GetTrainsErrorState extends AppStates {

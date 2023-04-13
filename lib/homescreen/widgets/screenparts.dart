@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:control_page/const.dart';
-// import 'package:control_page/dummydata/dummydata.dart';
 import 'package:control_page/homescreen/cubit/cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 Widget firstPart(BuildContext context, List trains, String station) {
+  cubic =AppCubit.get(context);
   return Container(
     decoration: const BoxDecoration(color: Colors.black),
     child: Padding(
@@ -47,6 +45,7 @@ Widget firstPart(BuildContext context, List trains, String station) {
               // height: 300,
               child: ListView.builder(
                 itemBuilder: (context, index) {
+
                   return buildTrainListItem(trains[index], context, index);
                 },
                 itemCount: trains.length,
@@ -73,7 +72,7 @@ Widget secondPart(BuildContext context, List trains, String date) {
           Container(
               width: double.infinity,
               height: 200,
-              child: Image(
+              child: const Image(
                 image: AssetImage('images/train.png'),
                 fit: BoxFit.cover,
               )),
@@ -84,7 +83,7 @@ Widget secondPart(BuildContext context, List trains, String date) {
             'Stations',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
@@ -97,14 +96,14 @@ Widget secondPart(BuildContext context, List trains, String date) {
 
             style: Theme.of(context).textTheme.bodySmall,
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Text(
             'Seats',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
@@ -131,7 +130,7 @@ Widget thirdPart(BuildContext context) {
             'Dashboard',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Expanded(
@@ -207,8 +206,10 @@ Widget thirdPart(BuildContext context) {
 Widget buildTrainListItem(String text, context, int index) {
   return GestureDetector(
     onTap: () {
+      trainNum=trains[index]["trainNum"].toString();
       itemSelect = index;
       selectedTrainName = text;
+
       AppCubit.get(context).selectPage();
     },
     child: MouseRegion(
@@ -273,3 +274,16 @@ Widget sensorIcon(String text, var state, BuildContext context) {
         title(text, context),
       ]));
 }
+// ValueListenableBuilder<String>(
+// builder: (BuildContext context, String value, Widget? child) {
+// return Row(
+// mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+// children: <Widget>[
+// Text('$value',
+// style: const TextStyle(
+// color: Colors.deepPurpleAccent, fontSize: 35))
+// ],
+// );
+// },
+// valueListenable: MapsCubit.get(context).mqttHandler.data,
+// ),

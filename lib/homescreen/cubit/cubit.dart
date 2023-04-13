@@ -1,26 +1,31 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:control_page/const.dart';
+import 'package:control_page/homescreen/cubit/mqtt.dart';
 import 'package:control_page/homescreen/cubit/states.dart';
-import 'package:control_page/models/train_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
   static AppCubit get(context) => BlocProvider.of(context);
+  MqttHandler mqtt=MqttHandler();
   void hoverEffect() {
     isHover = !isHover;
     emit(AppHoverState());
   }
-
+ void ConnectAndGetData(){
+    mqtt.connect();
+ }
+  void getData(){
+    mqtt.sub();
+  }
   void selectPage() {
     // trainId = trains[itemSelect]['trainID'];
     // getSeats(trainId);
     //print(trains[itemSelect]['trainID']);
-    emit(AppSelectState());
+    ConnectAndGetData();
   }
 
   void appIndeicator() {
+    ConnectAndGetData();
 
     emit(AppIndicatorState());
   }
