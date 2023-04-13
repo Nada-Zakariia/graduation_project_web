@@ -20,12 +20,11 @@ class AppCubit extends Cubit<AppStates> {
     emit(AppSelectState());
   }
 
-  void percentCircularIndeicator() {
-    for (double i = 1; i <= 100; i++) {
-      percentValue = i;
-    }
+  void appIndeicator() {
+
     emit(AppIndicatorState());
   }
+
 
   // void getSeats(String trainId) async {
   //   List seats = [];

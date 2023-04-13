@@ -147,9 +147,9 @@ Widget thirdPart(BuildContext context) {
                           animation: true,
                           animationDuration: 1200,
                           lineWidth: 12.0,
-                          percent: 24 / 50,
+                          percent:  tempValue / 50,
                           progressColor: ColorTheme.saimon,
-                          center: Text("${24.toString()}°C",
+                          center: Text("${tempValue.toString()}°C",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -169,9 +169,9 @@ Widget thirdPart(BuildContext context) {
                           animation: true,
                           animationDuration: 1200,
                           lineWidth: 12.0,
-                          percent: 50 / 100,
+                          percent: humValue / 100,
                           progressColor: ColorTheme.saimon,
-                          center: Text(50.toString(),
+                          center: Text(humValue.toString(),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -186,13 +186,13 @@ Widget thirdPart(BuildContext context) {
                   ],
                 ),
                 const Spacer(),
-                sensorIcon('Flame', true, context),
+                sensorIcon('Flame', flameState, context),
                 const Spacer(),
                 Row(
                   children: [
-                    sensorIcon('Door Lock', false, context),
+                    sensorIcon('Door Lock', doorLockState, context),
                     const Spacer(),
-                    sensorIcon('Lights', true, context),
+                    sensorIcon('Lights', lightState, context),
                   ],
                 ),
               ],

@@ -22,7 +22,7 @@ class _ControlLayoutState extends State<ControlLayout> {
 
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit()..percentCircularIndeicator(),
+      create: (context) => AppCubit()..appIndeicator(),
       //..getSeats(trainId)
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, AppStates state) {},
