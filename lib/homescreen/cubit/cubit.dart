@@ -20,7 +20,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(AppSelectState());
   }
 
-  void appIndeicator() {
+  void appIndicator() {
 
     emit(AppIndicatorState());
   }
