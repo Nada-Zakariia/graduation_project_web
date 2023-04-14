@@ -74,7 +74,7 @@ Widget secondPart(BuildContext context, List trains, String date) {
               width: double.infinity,
               height: 200,
               child: Image(
-                image: AssetImage('images/train.png'),
+                image: AssetImage('assets/images/train.png'),
                 fit: BoxFit.cover,
               )),
           const SizedBox(

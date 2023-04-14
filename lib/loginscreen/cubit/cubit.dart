@@ -12,6 +12,8 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialState());
   static LoginCubit get(context) => BlocProvider.of(context);
 
+
+
   bool isHidden = true;
   void visiblePassword() {
     isHidden = !isHidden;
