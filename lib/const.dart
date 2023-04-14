@@ -1,5 +1,7 @@
+import 'package:control_page/homescreen/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mqtt_client/mqtt_browser_client.dart';
 
 class ColorTheme {
   // static const Color mainBlue = Colors.orange;
@@ -24,8 +26,12 @@ IconData doorLock = Icons.lock;
 var itemHover;
 var itemSelect = 0;
 var selectedTrainName = 'Train1';
-double percentValue = 25;
-double pValue = 40;
+double tempValue = 25;
+double humValue = 40;
+bool flameState = true;
+bool doorLockState = false;
+bool lightState = true;
+String trainNum=trains[0]["trainNum"].toString();
 // bool isHidden = false;
 List allTrains = [];
 DateTime now = DateTime.now();
@@ -35,4 +41,6 @@ String trainId = trains[0]['trainID'];
 List trains = [];
 var numberOfBookedSeats = 0;
 var numberOfAvailableSeats = 0;
-String stationName = '';
+String stationName = 'Alexandria';
+MqttBrowserClient client=MqttBrowserClient('ws://test.mosquitto.org', '') ;
+AppCubit ?cubic ;
