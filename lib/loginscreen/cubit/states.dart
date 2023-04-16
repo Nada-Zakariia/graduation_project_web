@@ -1,4 +1,3 @@
-import 'package:control_page/homescreen/cubit/states.dart';
 
 abstract class LoginStates {}
 class PassIsVisibleState extends LoginStates{}
@@ -33,3 +32,5 @@ class GetTrainsErrorState extends LoginStates {
   GetTrainsErrorState(this.error);
   
 }
+
+class SlctUnslctSuccessState extends LoginStates {}

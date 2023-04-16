@@ -4,10 +4,7 @@ import 'package:control_page/loginscreen/button.dart';
 import 'package:control_page/loginscreen/defualtForm.dart';
 import 'package:control_page/payscreen/cubit/cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'cubit/states.dart';
 
 class payScreen extends StatelessWidget {
@@ -41,7 +38,7 @@ class payScreen extends StatelessWidget {
                     key: formKey,
                     child: Padding(
                       padding: const EdgeInsets.all(30.0),
-                      child: Container(
+                      child: SizedBox(
                         width: 350,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -85,7 +82,7 @@ class payScreen extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height * 0.5,
                                   decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color:const Color.fromARGB(255, 0, 0, 0),
                                     borderRadius: BorderRadius.circular(
                                         MediaQuery.of(context).size.width *
                                             0.03),

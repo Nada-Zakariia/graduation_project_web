@@ -1,6 +1,5 @@
 import 'package:control_page/bloc_observer.dart';
 import 'package:control_page/loginscreen/login_layout.dart';
-import 'package:control_page/payscreen/pay_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

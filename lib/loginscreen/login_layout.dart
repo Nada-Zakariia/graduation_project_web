@@ -8,7 +8,6 @@ import 'package:control_page/payscreen/pay_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../homescreen/home_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,22 +22,19 @@ class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
   FocusNode stationFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
-  Color iconcolor = ColorTheme.white;
-  Color iconcolor2 = ColorTheme.white;
-  String nextscreen = '0';
-  bool selected = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
-          // TODO: implement listener
         },
         builder: (context, state) {
+          LoginCubit cubit = LoginCubit.get(context);
           return Scaffold(
               body: Stack(children: [
-            Container(
+            SizedBox(
               height: double.infinity,
               width: double.infinity,
               child: Image.asset(
@@ -63,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontWeight: FontWeight.bold,
                                   )),
                       Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         width: 375,
                         child: Column(
                           children: [
@@ -74,19 +70,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 lable: 'Station Name',
                                 validator: 'Please Enter the Station Name',
                                 myFocusNode: stationFocus),
-                            SizedBox(height: 15),
+                           const SizedBox(height: 15),
                             defualtForm(
                                 context: context,
                                 controller: passwordController,
                                 inputType: TextInputType.visiblePassword,
                                 prefix: Icons.lock_outline,
-                                postfix: LoginCubit.get(context).isHidden
+                                postfix: cubit.isHidden
                                     ? Icons.visibility_off
                                     : Icons.visibility,
                                 sufffun: () {
-                                  LoginCubit.get(context).visiblePassword();
+                                  cubit.visiblePassword();
                                 },
-                                hidden: LoginCubit.get(context).isHidden,
+                                hidden: cubit.isHidden,
                                 lable: 'Password',
                                 validator: 'Please Enter Valid password',
                                 myFocusNode: passwordFocus),
@@ -95,31 +91,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 GestureDetector(
                                     onTap: () {
-                                      if (selected == false) {
-                                        setState(() {
-                                          iconcolor = ColorTheme.gold;
-                                          nextscreen = '1';
-
-                                          selected = true;
-                                        });
-                                      } else if (nextscreen == '1') {
-                                        setState(() {
-                                          iconcolor = ColorTheme.white;
-
-                                          nextscreen = '0';
-
-                                          selected = false;
-                                        });
+                                      if (cubit.selected == false) {
+                                        cubit.isSelected(
+                                            ColorTheme.gold, '1', true);
+                                      } else if (cubit.nextscreen == '1') {
+                                         cubit.isSelected(
+                                            ColorTheme.white, '1', false);
                                       }
                                     },
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 160,
                                       child: Row(
                                         children: [
                                           Icon(
                                             Icons.circle_rounded,
                                             size: 15,
-                                            color: iconcolor,
+                                            color: cubit.iconcolor,
                                           ),
                                           const SizedBox(
                                             width: 5,
@@ -143,32 +130,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      if (selected == false) {
-                                        setState(() {
-                                          iconcolor2 = ColorTheme.gold;
-
-                                          nextscreen = '2';
-
-                                          selected = true;
-                                        });
-                                      } else if (nextscreen == '2') {
-                                        setState(() {
-                                          iconcolor2 = ColorTheme.white;
-
-                                          nextscreen = '0';
-
-                                          selected = false;
-                                        });
+                                      if (cubit.selected == false) {
+                                        cubit.isSelected(
+                                            ColorTheme.gold, '2', true);
+                                      } else if (cubit.nextscreen == '2') {
+                                         cubit.isSelected(
+                                            ColorTheme.white, '2', false);
                                       }
                                     },
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 160,
                                       child: Row(
                                         children: [
                                           Icon(
                                             Icons.circle_rounded,
                                             size: 15,
-                                            color: iconcolor2,
+                                            color: cubit.iconcolor2,
                                           ),
                                           const SizedBox(
                                             width: 5,
@@ -196,10 +173,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   text: 'Log In',
                                   onpress: () {
                                     if (formKey.currentState!.validate()) {
-                                      if (nextscreen == '1') {
-                                        LoginCubit.get(context).login(
+                                      if (cubit.nextscreen == '1') {
+                                        cubit.login(
                                             passwordController.text, context);
-                                      } else if (nextscreen == '2') {
+                                      } else if (cubit.nextscreen == '2') {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
