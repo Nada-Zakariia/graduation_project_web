@@ -25,6 +25,7 @@ Widget defualtForm({
       },
       controller: controller,
       keyboardType: inputType,
+      cursorColor: ColorTheme.gold,
       obscureText: hidden,
       onFieldSubmitted: (s) {
         onsubmit!(s);
