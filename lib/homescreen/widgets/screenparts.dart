@@ -209,7 +209,11 @@ Widget buildTrainListItem(String text, context, int index) {
       trainNum=trains[index]["trainNum"].toString();
       itemSelect = index;
       selectedTrainName = text;
-
+      tempValue = 0;
+      humValue = 0;
+      flameState = false;
+      doorLockState = false;
+      lightState = false;
       AppCubit.get(context).selectPage();
     },
     child: MouseRegion(
