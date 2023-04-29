@@ -156,7 +156,7 @@ class payScreen extends StatelessWidget {
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${payCubit.get(context).user.uId}0000',
+                                                    '${payCubit.get(context).user.uId}',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyMedium
@@ -231,7 +231,7 @@ class payScreen extends StatelessWidget {
                                       .get(context)
                                       .updateBalance(phoneController.text);
                                 },
-                                width: MediaQuery.of(context).size.width * 0.06,
+                                width: 90,
                                 height: 60,
                                 context: context)
                             : const SizedBox(
