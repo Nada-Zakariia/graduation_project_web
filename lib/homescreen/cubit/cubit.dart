@@ -13,6 +13,7 @@ class AppCubit extends Cubit<AppStates> {
   }
  void ConnectAndGetData(){
     mqtt.connect();
+    emit(DataArrivalState());
  }
   void getData(){
     mqtt.sub();
@@ -22,6 +23,7 @@ class AppCubit extends Cubit<AppStates> {
     // getSeats(trainId);
     //print(trains[itemSelect]['trainID']);
     ConnectAndGetData();
+    emit(DataArrivalState());
   }
 
   void appIndeicator() {

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:control_page/const.dart';
-import 'package:control_page/homescreen/cubit/cubit.dart';
 import 'package:control_page/homescreen/cubit/states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mqtt_client/mqtt_client.dart';
@@ -98,10 +97,11 @@ void onSubscribed(String topic) {
 
 void onDisconnected() {
   print('EXAMPLE::OnDisconnected client callback - Client disconnection');
+  connect();
   if (client.connectionStatus!.disconnectionOrigin ==
       MqttDisconnectionOrigin.solicited) {
     print('EXAMPLE::OnDisconnected callback is solicited, this is correct');
-    AppCubit().ConnectAndGetData();
+
   }
 }
 
