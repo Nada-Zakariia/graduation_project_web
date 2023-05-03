@@ -8,6 +8,9 @@ class AppSelectState extends AppStates {}
 
 class AppIndicatorState extends AppStates {}
 
+class DataArrivalState extends AppStates {}
+
+
 // class GetTrainsSuccessState extends AppStates {}
 
 // class GetTrainsErrorState extends AppStates {
@@ -35,3 +38,8 @@ class GetSeatsErrorState extends AppStates {
 
   GetSeatsErrorState(this.error);
 }
+
+class SearchedTrainSuccessState extends AppStates{}
+class ScrollState extends AppStates{}
+
+

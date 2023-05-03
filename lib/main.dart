@@ -8,9 +8,9 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-Bloc.observer = MyBlocObserver();
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'kalam',
           textTheme: const TextTheme(
             bodyLarge: TextStyle(fontSize: 35),
-            bodyMedium: TextStyle(fontSize: 20),
+            bodyMedium: TextStyle(fontSize: 22),
             bodySmall: TextStyle(fontSize: 16),
           ),
           scaffoldBackgroundColor: Colors.black,
