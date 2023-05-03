@@ -82,7 +82,7 @@ class payScreen extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height * 0.5,
                                   decoration: BoxDecoration(
-                                    color:const Color.fromARGB(255, 0, 0, 0),
+                                    color: const Color.fromARGB(255, 0, 0, 0),
                                     borderRadius: BorderRadius.circular(
                                         MediaQuery.of(context).size.width *
                                             0.03),
@@ -193,7 +193,7 @@ class payScreen extends StatelessWidget {
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${payCubit.get(context).user.balance} EGP',
+                                                    '${payCubit.get(context).user.bill} EGP',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyMedium
