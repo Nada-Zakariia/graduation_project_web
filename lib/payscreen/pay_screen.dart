@@ -193,7 +193,7 @@ class payScreen extends StatelessWidget {
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${payCubit.get(context).user.balance} EGP',
+                                                    '${payCubit.get(context).user.bill} EGP',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyMedium

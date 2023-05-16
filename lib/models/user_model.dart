@@ -4,7 +4,7 @@ class UserModel {
  // String? phone;
  // String? image;
   String? uId;
-  String? balance;
+  String? bill;
   //TicketModel ?tickets;
   UserModel({
     this.name,
@@ -13,7 +13,7 @@ class UserModel {
     //this.image,
     //this.token,
     this.uId,
-    this.balance
+    this.bill
     //this.tickets
   });
 
@@ -23,7 +23,7 @@ class UserModel {
    // phone = json['phone'];
    // image = json['image'];
    // email = json['email'];
-    balance = json['balance'];
+    bill = json['bill'];
   }
   Map<String, dynamic> toMap() {
     return {
@@ -32,7 +32,7 @@ class UserModel {
      // "phone": phone,
      // "image": image,
      // "email": email,
-      "balance": balance,
+      "bill": bill,
     };
   }
 }

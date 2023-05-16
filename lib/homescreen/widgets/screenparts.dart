@@ -11,30 +11,33 @@ Widget firstPart(BuildContext context, List trains, String station) {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                'Control Page',
-                style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: menuTextColor),
-              ),
-              Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  width: 50,
-                  height: 25,
-                  decoration: BoxDecoration(
-                      color: ColorTheme.gold,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Center(
-                    child: Text('Admin',
-                        // style: TextStyle(color: pageTextColor),
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: pageTextColor,
-                            )),
-                  )),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Text(
+                  'Control Page',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: menuTextColor),
+                ),
+                Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    width: 50,
+                    height: 25,
+                    decoration: BoxDecoration(
+                        color: ColorTheme.gold,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text('Admin',
+                          // style: TextStyle(color: pageTextColor),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: pageTextColor,
+                              )),
+                    )),
+              ],
+            ),
           ),
           const SizedBox(
             height: 150,
@@ -64,57 +67,60 @@ Widget secondPart(BuildContext context, List trains, String date) {
       decoration: const BoxDecoration(
         color: ColorTheme.blueGray,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Status', style: Theme.of(context).textTheme.bodyLarge),
-          Text(date),
-          Container(
-              width: double.infinity,
-              height: 200,
-              child: Image(
-                image: AssetImage('assets/images/train.png'),
-                fit: BoxFit.cover,
-              )),
-          const SizedBox(
-            height: 30,
-          ),
-          Text(
-            'Stations',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            trains[itemSelect]['stations']
-                .toString()
-                .replaceAll("[", "")
-                .replaceAll("]", ""),
-            // trainsData[selectedTrainName]!['stations']!
-            //     .toString()
-
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Text(
-            'Seats',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            'Number of booked seats:8',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          Text(
-            'Number of available seats:40',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Status', style: Theme.of(context).textTheme.bodyLarge),
+            Text(date),
+            Container(
+                width: double.infinity,
+                height: 200,
+                child: Image(
+                  image: AssetImage('assets/images/train.png'),
+                  fit: BoxFit.cover,
+                )),
+            const SizedBox(
+              height: 30,
+            ),
+            Text(
+              'Stations',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              trains[itemSelect]['stations']
+                  .toString()
+                  .replaceAll("[", "")
+                  .replaceAll("]", ""),
+              // trainsData[selectedTrainName]!['stations']!
+              //     .toString()
+      
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Text(
+              'Seats',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Number of booked seats:8',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            Text(
+              'Number of available seats:40',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
       ));
 }
 

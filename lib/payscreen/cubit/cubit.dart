@@ -40,7 +40,7 @@ class payCubit extends Cubit<payStates> {
         .doc(start)
         .collection('numbers')
         .doc(number)
-        .set({"balance": "0"}, SetOptions(merge: true)).then((value) {
+        .set({"bill": "0"}, SetOptions(merge: true)).then((value) {
       emit(paySuccesslState());
       searchNumber(number: number);
     }).catchError((e) {
