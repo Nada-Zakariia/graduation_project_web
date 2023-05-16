@@ -35,7 +35,7 @@ class LoginCubit extends Cubit<LoginStates> {
   }
 
   void login(String password, BuildContext context) {
-    String stationName = '';
+    stationName = '';
     emit(LoginLoadinglState());
     FirebaseFirestore.instance
         .collection('stations')

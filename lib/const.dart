@@ -23,6 +23,7 @@ Color textBackground = Colors.white;
 Color flameIndicator = ColorTheme.primaryColor;
 Color lightIndicator = ColorTheme.primaryColor;
 IconData doorLock = Icons.lock;
+
 var itemHover;
 var itemSelect = 0;
 var selectedTrainName = 'Train1';
@@ -31,16 +32,23 @@ double humValue = 0;
 bool flameState = false;
 bool doorLockState = false;
 bool lightState = false;
-String trainNum=trains[0]["trainNum"].toString();
-// bool isHidden = false;
-List allTrains = [];
+String trainNum = '';
+List<String> allTrains = []; //trains with only names to display
+List<String> searchedTrainsList = []; //trains with names resulted by search
+List searchedTrainsData = [];
 DateTime now = DateTime.now();
 dynamic date = DateFormat.yMMMEd().format(now);
+String day = DateFormat('EEEE').format(now).toString().substring(0, 3);
+String trainId = '';
+List trains = []; //trains with data
+int numberOfAvailableSeats = 0;
+int numberOfBookedSeats = 0;
+String stationName = '';
+MqttBrowserClient client = MqttBrowserClient('ws://test.mosquitto.org', '');
+AppCubit? cubic;
+var searchController = TextEditingController();
+FocusNode searchFocus = FocusNode();
 
-String trainId = trains[0]['trainID'];
-List trains = [];
-var numberOfBookedSeats = 0;
-var numberOfAvailableSeats = 0;
-String stationName = 'Alexandria';
-MqttBrowserClient client=MqttBrowserClient('ws://test.mosquitto.org', '') ;
-AppCubit ?cubic ;
+//scrolling
+var scrollController = ScrollController();
+var isVisable = true;

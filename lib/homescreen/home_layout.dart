@@ -1,14 +1,11 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
-import 'package:control_page/dummydata/dummydata.dart';
 import 'package:control_page/const.dart';
 import 'package:control_page/homescreen/cubit/cubit.dart';
 import 'package:control_page/homescreen/cubit/states.dart';
 import 'package:control_page/homescreen/widgets/screenparts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:multi_split_view/multi_split_view.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class ControlLayout extends StatefulWidget {
   final String station;
@@ -21,9 +18,12 @@ class _ControlLayoutState extends State<ControlLayout> {
   // List<String> trains = trainsData.keys.toList();
 
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return BlocProvider(
-      create: (context) => AppCubit()..appIndeicator(),
-      //..getSeats(trainId)
+      create: (context) => AppCubit()
+        ..initialFunction()
+        ..appIndeicator(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, AppStates state) {},
         builder: (context, AppStates state) => Scaffold(
@@ -36,7 +36,7 @@ class _ControlLayoutState extends State<ControlLayout> {
                   areas: [Area(weight: 0.15)],
                 ),
                 children: [
-                  firstPart(context, allTrains, widget.station),
+                  firstPart(context, allTrains, widget.station, width, height),
                   MultiSplitViewTheme(
                     data: MultiSplitViewThemeData(
                       dividerThickness: 0.00000000000000001,
@@ -46,8 +46,9 @@ class _ControlLayoutState extends State<ControlLayout> {
                           areas: [Area(weight: 0.35)],
                         ),
                         children: [
-                          secondPart(context, trains, date),
-                          thirdPart(context),
+                          secondPart(context, trains, date, width, height),
+                          // Text('teesttsts'),
+                          thirdPart(context, width, height),
                         ]),
                   ),
                 ]),

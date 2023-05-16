@@ -30,6 +30,7 @@ class payCubit extends Cubit<payStates> {
       return snapshot.exists;
     }).catchError((e) {
       emit(getUserErrorState(e.toString()));
+
     });
     return false;
   }

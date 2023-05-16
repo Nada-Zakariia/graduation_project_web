@@ -8,7 +8,6 @@ import 'package:control_page/payscreen/pay_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -28,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           LoginCubit cubit = LoginCubit.get(context);
           return Scaffold(
@@ -70,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 lable: 'Station Name',
                                 validator: 'Please Enter the Station Name',
                                 myFocusNode: stationFocus),
-                           const SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             defualtForm(
                                 context: context,
                                 controller: passwordController,
@@ -95,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         cubit.isSelected(
                                             ColorTheme.gold, '1', true);
                                       } else if (cubit.nextscreen == '1') {
-                                         cubit.isSelected(
+                                        cubit.isSelected(
                                             ColorTheme.white, '1', false);
                                       }
                                     },
@@ -134,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         cubit.isSelected(
                                             ColorTheme.gold, '2', true);
                                       } else if (cubit.nextscreen == '2') {
-                                         cubit.isSelected(
+                                        cubit.isSelected(
                                             ColorTheme.white, '2', false);
                                       }
                                     },
@@ -172,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               builder: (context) => button(
                                   text: 'Log In',
                                   onpress: () {
+                                    // print(DateTime.now().toString().split(" ").first);
                                     if (formKey.currentState!.validate()) {
                                       if (cubit.nextscreen == '1') {
                                         cubit.login(

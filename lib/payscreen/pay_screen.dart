@@ -73,7 +73,8 @@ class payScreen extends StatelessWidget {
                     condition: state is! getUserLoadinglState,
                     builder: (context) => Column(
                       children: [
-                        state is getUserSuccesslState
+                        state is getUserSuccesslState ||
+                                state is getUserErrorState
                             ? Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Container(
@@ -82,7 +83,7 @@ class payScreen extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height * 0.5,
                                   decoration: BoxDecoration(
-                                    color:const Color.fromARGB(255, 0, 0, 0),
+                                    color: const Color.fromARGB(255, 0, 0, 0),
                                     borderRadius: BorderRadius.circular(
                                         MediaQuery.of(context).size.width *
                                             0.03),
@@ -207,16 +208,28 @@ class payScreen extends StatelessWidget {
                                                 ],
                                               )
                                             ])
-                                      : Center(
-                                          child: Text(
-                                              'Phone Number Not Found !',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium
-                                                  ?.copyWith(
-                                                    //  color: ColorTheme.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ))),
+                                      : Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Text(
+                                                  'Phone Number Not Found !',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium
+                                                      ?.copyWith(
+                                                        color: ColorTheme.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      )),
+                                            ),
+                                          ],
+                                        ),
                                 ),
                               )
                             : const SizedBox(
