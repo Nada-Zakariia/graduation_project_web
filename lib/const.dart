@@ -44,8 +44,9 @@ List trains = []; //trains with data
 int numberOfAvailableSeats = 0;
 int numberOfBookedSeats = 0;
 String stationName = '';
-MqttBrowserClient client = MqttBrowserClient('ws://test.mosquitto.org', '');
+MqttBrowserClient client = MqttBrowserClient('wss://test.mosquitto.org', '');
 AppCubit? cubic;
+var contextt;
 var searchController = TextEditingController();
 FocusNode searchFocus = FocusNode();
 

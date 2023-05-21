@@ -1,13 +1,13 @@
 import 'package:control_page/const.dart';
 import 'package:control_page/homescreen/cubit/cubit.dart';
-import 'package:control_page/loginscreen/defualtForm.dart';
 import 'package:control_page/payscreen/pay_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 Widget firstPart(BuildContext context, List trains, String station,
-    double width, double height) {
+    double width, double height)
+{
+  contextt=context;
   return Container(
     decoration: const BoxDecoration(color: Colors.black),
     padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
@@ -45,25 +45,25 @@ Widget firstPart(BuildContext context, List trains, String station,
           Container(
             height: height * 0.1,
             child: TextFormField(
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               controller: searchController,
               cursorColor: ColorTheme.gold,
               onChanged: (value) =>
                   AppCubit.get(context).onSearchTextChanged(value),
               decoration: InputDecoration(
                 labelText: 'Search...',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: Colors.white),
                 border: const OutlineInputBorder(),
                 fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: ColorTheme.gold,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.white,
                   ),
                 ),
@@ -72,11 +72,11 @@ Widget firstPart(BuildContext context, List trains, String station,
           ),
           // searchedTrainsData.isEmpty?Text('No Trains Found'): trainList()
           Container(
-            margin: EdgeInsets.only(bottom: 80),
+            margin: const EdgeInsets.only(bottom: 80),
             height: height * 0.35,
             child: searchedTrainsList.isNotEmpty
                 ? trainList(height)
-                : Text(
+                : const Text(
                     'No Trains Found',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -128,7 +128,7 @@ Widget trainList(double height) {
                   height: height * 0.08,
                   color: Colors.black.withOpacity(0.75),
                 ),
-                Icon(
+                const Icon(
                   Icons.arrow_drop_down_circle_outlined,
                   color: ColorTheme.gold,
                 )
@@ -157,7 +157,7 @@ Widget secondPart(BuildContext context, List trains, String date, double width,
             Container(
                 width: double.infinity,
                 height: 200,
-                child: Image(
+                child: const Image(
                   image: AssetImage('assets/images/train.png'),
                   fit: BoxFit.cover,
                 )),

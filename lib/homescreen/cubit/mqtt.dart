@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:control_page/const.dart';
+import 'package:control_page/homescreen/cubit/cubit.dart';
 import 'package:control_page/homescreen/cubit/states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mqtt_client/mqtt_client.dart';
@@ -10,7 +11,7 @@ class MqttHandler with ChangeNotifier {
     client.setProtocolV311();
     client.keepAlivePeriod = 60;
     client.connectTimeoutPeriod = 2000; // milliseconds
-    client.port = 8080;
+    client.port = 8081;
     client.onDisconnected = onDisconnected;
     client.onConnected = onConnected;
     client.onSubscribed = onSubscribed;
@@ -80,7 +81,9 @@ void sub()async{
         'EXAMPLE::Change notification:: topic is <${c[0]
             .topic}>, payload is <-- $pt -->');
     print('');
-    cubic!.emit(DataArrivalState());
+    AppCubit.get(contextt).emit(DataArrivalState());
+
+    print("hhihihi");
   });
 
 
